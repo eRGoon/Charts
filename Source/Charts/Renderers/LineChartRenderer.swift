@@ -90,6 +90,21 @@ open class LineChartRenderer: LineRadarRenderer
         context.setStrokeColor(drawingColor.cgColor)
         context.strokePath()
     }
+
+    private func drawHorizontalBezierLine(
+        context: CGContext,
+        spline: CGMutablePath,
+        drawingColor: NSUIColor)
+    {
+        context.beginPath()
+        context.addPath(spline)
+        context.setStrokeColor(drawingColor.cgColor)
+        context.setLineCap(CGLineCap.butt)
+        context.setLineJoin(CGLineJoin.round)
+        context.setMiterLimit(10.0)
+        context.setFlatness(0.6)
+        context.strokePath()
+    }
     
     @objc open func drawCubicBezier(context: CGContext, dataSet: LineChartDataSetProtocol)
     {
@@ -252,7 +267,7 @@ open class LineChartRenderer: LineRadarRenderer
         }
         else
         {
-            drawLine(context: context, spline: cubicPath, drawingColor: drawingColor)
+            drawHorizontalBezierLine(context: context, spline: cubicPath, drawingColor: drawingColor)
         }
     }
     
