@@ -300,6 +300,7 @@ open class LineChartRenderer: LineRadarRenderer
         
         if dataSet.fill != nil
         {
+            drawFilledPath(context: context, path: spline, fillColor: dataSet.fillColor, fillAlpha: dataSet.fillAlpha)
             drawFilledPath(context: context, path: spline, fill: dataSet.fill!, fillAlpha: dataSet.fillAlpha)
         }
         else
